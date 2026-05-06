@@ -1,9 +1,10 @@
+
 # P2FHC
 Robot motion control
 
 
 
-
+<img width="1701" height="699" alt="overframework" src="https://github.com/user-attachments/assets/03650ff2-eb81-4e33-b067-5711acd2cbc2" />
 
 
 
