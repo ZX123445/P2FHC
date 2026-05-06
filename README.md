@@ -8,13 +8,18 @@ Robot motion control
 
 
 
+<img width="1077" height="603" alt="12" src="https://github.com/user-attachments/assets/3b9afc08-1b21-4e12-abb7-cfd80fd11606" />
 
 
-#####Dance####
+
+
+
+
+
 https://github.com/user-attachments/assets/f36123d6-a1ba-4ae9-a890-0cf2d5042285
 
 
-###Kungfu####
+
 https://github.com/user-attachments/assets/1097b05f-34b5-40e8-9a98-f0ad992eee90
 
 
