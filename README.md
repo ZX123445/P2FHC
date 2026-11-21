@@ -4,7 +4,7 @@
 
 **Whole-body motion tracking on Unitree G1 through hierarchical motion context and separately regulated residual corrections.**
 
-    [Motivation](#motivation) · [Method](#method-architecture) · [Results](#experimental-results) · [Training](#training-procedure) · [Deployment](#deployment-interface)
+ [Motivation](#motivation) · [Method](#method-architecture) · [Results](#experimental-results) · [Training](#training-procedure) · [Deployment](#deployment-interface)
 
 PDHLC separates **motion-conditioned correction generation** from **reference- and feedback-conditioned amplitude regulation**. A hierarchical motion prior provides global motion context, temporally aligned local details, and a posterior-dispersion signal. A residual policy generates a candidate joint-space correction, while a separate scalar gate regulates its strength using reference dispersion, estimated physical feedback, and inertial cues.
 
