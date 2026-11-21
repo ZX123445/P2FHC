@@ -93,7 +93,7 @@ The gate modulates only the residual. The per-joint residual limit is $\Delta a_
 
 ## Experimental Results
 
-All values below are reported in the [accompanying paper](docs/paper.pdf). Completion means finishing the full prescribed reference under the stated protocol.
+
 
 ### Simulation: controller comparison
 
