@@ -71,7 +71,6 @@ Here, $s'_t$ combines the current reference with recent robot observations. The 
 ### 3. Feedback-conditioned amplitude regulation
 
 A physical-state estimator uses observation history and inertial inputs to estimate center-of-mass velocity, support position/ZMP, execution contacts, and normalized contact loads. These estimates are combined with posterior dispersion and an IMU descriptor:
-
 $$
 \alpha_t = \operatorname{sigmoid}\!\left(
 g_\eta(u_t,\hat y_t^{\mathrm{phys}},p_t^{\mathrm{IMU}})
@@ -79,8 +78,8 @@ g_\eta(u_t,\hat y_t^{\mathrm{phys}},p_t^{\mathrm{IMU}})
 \qquad 0 < \alpha_t < 1.
 $$
 
-The deterministic joint-position command is
 
+The deterministic joint-position command is
 $$
 a_t^{\mathrm{final}}
 = a_t^{\mathrm{base}} + \alpha_t\Delta a_t^{\mathrm{cand}}.
@@ -277,6 +276,8 @@ This README summarizes the accompanying manuscript. Installation commands, execu
 
 
 ##Real Robot
+
+
 https://github.com/user-attachments/assets/f36123d6-a1ba-4ae9-a890-0cf2d5042285
 
 
