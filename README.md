@@ -87,9 +87,8 @@ $$
 
 The gate modulates only the residual. The per-joint residual limit is $\Delta a_{\max,j}=0.10\,\mathrm{rad}$, giving a deterministic bound of $|\Delta a_{t,j}|\leq 0.10\alpha_t\,\mathrm{rad}$.
 
-**Training distinction.** In Stage IV, the gate modifies the pre-squash Gaussian mean, while the exploration standard deviation is parameterized separately. Stochastic training retains a residual support bounded by ±0.10 rad; the tighter gate-scaled bound above describes zero-noise execution.
 
-*Source: paper Sections III-B–III-D, Eqs. (15), (24)–(26), (31), and (35).*
+
 
 ## Experimental Results
 
@@ -111,11 +110,13 @@ The main comparison on the **held-out H2 motion split** uses **five seeds and 1,
 
 PDHLC improves completion by **2.58 percentage points** over physics-only gating and **7.40 percentage points** over ungated residual control. Tracking errors are measured over each controller's observed frames up to completion or termination.
 
-*Source: Table II(A), p. 8. VMS and GMT are contextual external baselines; the remaining rows are internal controller variants.*
+
 
 ![Simulation examples for Kungfu, squatting and standing, hip swing, and 45-degree leftward walking](images/simulation_examples.png)
 
 *Figure 3 from the paper. Representative simulated motion-tracking sequences.*
+
+
 
 ### Matched comparison: scalar gating vs. direct cue input
 
@@ -128,7 +129,7 @@ This experiment matches upstream features, action bounds, reward, model capacity
 
 The additional cues can change both correction pattern and magnitude when supplied directly to the residual policy. PDHLC routes those cues to a separate scalar gate. This comparison uses a separate evaluation block from the controller comparison above.
 
-*Source: Table II(B), pp. 8–9.*
+
 
 ### Perturbation robustness in simulation
 
@@ -144,7 +145,8 @@ The paper evaluates command delays, dynamics scaling, torso pushes, friction cha
 
 The push acts along world +x from 0.50 to 0.70 s. These are simulation perturbation results; physical disturbance-recovery testing is identified as future work in the paper.
 
-*Source: Table V and Section IV-D, pp. 9–10.*
+
+
 
 ### Real-world Unitree G1 experiments
 
@@ -163,6 +165,7 @@ The push acts along world +x from 0.50 to 0.70 s. These are simulation perturbat
 | Uneven-terrain walking | 15 / 20 | 75.0 | 14.0 | 16.9 |
 | **All categories** | **86 / 100** | **86.0** | — | — |
 
+
 **Set A — shared-clip controller comparison.** Four controllers are evaluated on ten shared clips, with 40 trials per controller.
 
 | Controller | Completed / trials | Completion (%) | Trial-balanced body-point error ↓ (mm) |
@@ -176,7 +179,8 @@ Body-point error uses 15 points after root-translation and yaw alignment. A sepa
 
 Latency is measured from input-packet availability to command submission, excluding sensing, communication, and actuator response. Set C p95 values are **15.5–17.0 ms**; the separate repeated-G1 evaluation reports **17.4 ms**, within the **20 ms** control period at that percentile under the tested configuration.
 
-*Source: Table VI and Section IV-E, pp. 10–11. The category, shared-clip, and repeated-G1 results are separate trial sets.*
+
+
 
 ## Reference Data
 
@@ -191,7 +195,8 @@ Reference motions come from **AMASS**, **LAFAN1**, and additional sources. The p
 
 The controller accesses prescribed reference frames ahead of the current time. This lookahead does not require future robot measurements.
 
-*Source: Section III-A, p. 3.*
+
+
 
 ## Training Procedure
 
@@ -203,6 +208,7 @@ The controller accesses prescribed reference frames ahead of the current time. T
 | IV | Residual policy, scalar gate, and exploration parameters | Joint PPO optimization | 492 million environment steps; 5,000 updates |
 
 Stage IV freezes the motion prior, nominal tracker, and physical-state estimator. Stages II and IV use the same tracking reward. Models are selected on H1 and evaluated on H2.
+
 
 ### Reported implementation settings
 
@@ -223,7 +229,7 @@ Stage IV freezes the motion prior, nominal tracker, and physical-state estimator
 | Stage-IV PPO | Clip 0.20; discount 0.99; GAE parameter 0.95; rollout length 24 |
 | Domain randomization | Mass ±15%; friction 0.6–1.2; motor scale 0.9–1.1; delay 0–2 steps |
 
-*Source: Table I, p. 6, and Section IV-A, p. 7.*
+
 
 ## Deployment Interface
 
@@ -242,11 +248,13 @@ The controller sends **29 joint-position commands at 50 Hz**. The current-step d
 | IMU acceleration | 3 |
 | **Total** | **218** |
 
+
 Additional inputs include the **5 × 93 proprioceptive history**, cached global/local latents and posterior dispersion, and estimated physical feedback. The 218-dimensional packet is therefore one part of the complete controller input.
 
 The reported normalized residual scale is **0.40 policy units**, mapped through a **0.25 rad** actuator scale to **0.10 rad**. The paper reports low-level PD gains of **Kp/Kd = 60/2.5**.
 
-*Source: Sections III-A and III-C; Table I, pp. 3–6.*
+
+
 
 ## Scope and Interpretation
 
@@ -255,6 +263,9 @@ The reported normalized residual scale is **0.40 policy units**, mapped through 
 - Contact-related losses regularize the learned motion representation. Residual bounds and empirical tracking performance do not constitute a general closed-loop stability guarantee.
 - The main simulation completion metric includes a fixed deadline. It should be interpreted together with reference duration and the deadline-eligible results.
 - Hardware computation latency excludes sensing, communication, and actuator response. Hardware push-recovery performance is not established by the simulation perturbation tests.
+
+
+
 
 ## Project Resources
 
@@ -266,10 +277,6 @@ The reported normalized residual scale is **0.40 policy units**, mapped through 
 | Simulation examples | [images/simulation_examples.png](images/simulation_examples.png) |
 | Hardware examples | [images/hardware_examples.png](images/hardware_examples.png) |
 | Project repository named in the manuscript | [ZX123445/PDHLC](https://github.com/ZX123445/PDHLC) |
-
-This README summarizes the accompanying manuscript. Installation commands, executable training/evaluation entry points, checkpoint links, and license information are not specified in that manuscript.
-
-
 
 
 
