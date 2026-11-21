@@ -4,14 +4,13 @@ Robot motion control
 
 
 
-[motivation.pdf](https://github.com/user-attachments/files/35191527/motivation.pdf)
+## Motivation
 
+[![Motivation](images/motivation.png)](https://github.com/user-attachments/files/35191527/motivation.pdf)
 
+## Method Architecture
 
-[method architecture.pdf](https://github.com/user-attachments/files/35191528/method.architecture.pdf)
-
-
-
+[![Method Architecture](images/method_architecture.png)](https://github.com/user-attachments/files/35191528/method.architecture.pdf)
 
 
 
